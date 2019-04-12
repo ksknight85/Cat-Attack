@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ksknight85/Project2#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "less": "^3.9.0",
     "mysql2": "^1.6.5",
     "sequelize": "^5.3.1"
   }
