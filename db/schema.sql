@@ -1,2 +1,15 @@
 DROP DATABASE IF EXISTS project2;
 CREATE DATABASE project2;
+USE project2; 
+
+
+CREATE TABLE gifs
+(
+  gif_Id INT NOT NULL AUTO_INCREMENT, 
+  url VARCHAR(500), 
+  PRIMARY KEY (gif_Id)
+);
+
+SELECT * FROM 
+
+
