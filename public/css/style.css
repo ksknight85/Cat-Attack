@@ -191,6 +191,7 @@
     .navbar {
         border-bottom: 2px solid fuchsia;
         padding: 0px;
+        padding-left: 10px;
     }
 
 
