@@ -7,7 +7,9 @@
             $("#gifDiv").empty();
             console.log("hi")
     reactionCounter++
+
    var offset = (reactionCounter * 10);
+
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=cat&offset=" + offset + "&api_key=pUQxAeyd7mmJQpZYgXXUmvzxHWPi1ZD6";
   
     $.ajax({
@@ -18,12 +20,14 @@
   
             var gifDiv = $("#gifDiv");
     
+
             var gifEach = $("<div>")
 
             //ADD GIF TO IMAGE DIV
             var stillURL = response.data[i].images.fixed_height_still.url;
             var animateURL = response.data[i].images.fixed_height.url;
             var gifImg = $("<img>");
+
             gifEach.append(gifImg)
   
             var gifButton = $("<button>Pick me!</button>")
@@ -32,6 +36,7 @@
             gifButton.attr("data-url", animateURL)
             gifEach.append(gifButton)
 
+
             //ADD STILLIMAGE, ANIMATES & DATA SOURCE
             gifImg.attr("src", stillURL);
             gifImg.attr("data-still", stillURL);
@@ -39,7 +44,9 @@
             gifImg.attr("data-state", "still");
             gifImg.addClass("gif");
 
+
             gifDiv.append(gifEach)
+
   
         };
     });
@@ -56,6 +63,7 @@
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }
+
     })
 
     $(".selectMe").on("click", ".selectMe", function(){
@@ -75,4 +83,5 @@
           );
         });
   
+
 
