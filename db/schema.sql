@@ -11,7 +11,4 @@ CREATE TABLE gifs
   PRIMARY KEY (gif_Id)
 );
 
-SELECT * FROM 
-
-
-
+SELECT * FROM gifs;
