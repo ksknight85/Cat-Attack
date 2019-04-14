@@ -1,3 +1,4 @@
+/* tournament bracket */
 *,
     *:after,
     *:before {
@@ -38,7 +39,7 @@
         width: 15px;
         height: 50%;
         transform: translate(100%, -50%);
-        border: 1px solid purple;
+        border: 1px solid fuchsia;
         border-left: 0;
         border-radius: 0 10px 10px 0;
     }
@@ -51,7 +52,7 @@
         right: 0;
         width: 15px;
         padding: 1px 0 0;
-        background: #c0c0c0;
+        background: fuchsia;
         transform: translate(200%, -50%);
     }
 
@@ -71,7 +72,7 @@
     .tournament li .game>* {
         padding: 1rem 1.25rem;
         background: #FFF;
-        border-left: 6px solid #858585;
+        border-left: 6px solid fuchsia;
     }
 
     .tournament li .game>*:not(:last-child) {
@@ -79,8 +80,8 @@
     }
 
     .tournament li .game>*:first-child {
-        border-left-color: #60c645;
-        color: #60c645;
+        border-left-color: #ef8f6e;
+        color: #ef8f6e;
     }
 
     .tournament li .game+ul {
@@ -92,7 +93,7 @@
         left: 0;
         right: auto;
         transform: translate(-100%, -50%);
-        border: 1px solid #c0c0c0;
+        border: 1px solid fuchsia;
         border-right: 0;
         border-radius: 10px 0 0 10px;
     }
@@ -125,24 +126,6 @@
     button {
         color: var(--color);
         transition: 0.25s;
-    }
-
-    button:hover,
-    button:focus {
-        border-color: var(--hover);
-        color: #fff;
-    }
-
-    body {
-        color: #fff;
-        /* font: 300 1em 'Fira Sans', sans-serif; */
-        text-align: center;
-        background-color: #17181c;
-        background-image: -webkit-linear-gradient(-75deg, #17181c 49.95%, #bcf647 50.05%);
-        min-height: 300px;
-    }
-
-    button {
         background: none;
         border: 2px solid;
         font: inherit;
@@ -151,12 +134,27 @@
         padding: 1em 2em;
     }
 
+    button:hover,
+    button:focus {
+        border-color: var(--hover);
+        color: #fff;
+    }
+
+    #indexBody {
+        color: #fff;
+        /* font: 300 1em 'Fira Sans', sans-serif; */
+        text-align: center;
+        background-color: #17181c;
+        background-image: -webkit-linear-gradient(-75deg, #17181c 49.95%, #bcf647 50.05%);
+        min-height: 300px;
+    }
+
     h1 {
         font-weight: 400;
     }
 
     #code {
-        color: #e5ff60;
+        color: #bcf647;
         font: inherit;
         font-size: 20px;
     }
@@ -195,7 +193,7 @@
     }
 
 
-    p {
+    #title {
         font-family: 'Orbitron', sans-serif;
         margin-top: 20px;
         margin-bottom: 0px;
@@ -250,13 +248,51 @@
 
     h3 {
         display: inline-block;
-        color: #e5ff60;
+        color: #bcf647;
         font-size: 20px;
     }
 
-    #gradient {
+    .gradient {
         width: 100%;
-        height: 800px;
+        /* height: 800px; */
         padding: 0px;
         margin: 0px;
+    }
+
+    #gifBody {
+        color: #fff;
+        text-align: center;
+        background-color: #17181c;
+        background-image: -webkit-linear-gradient(-75deg, #17181c 49.95%, #bcf647 50.05%);
+        min-height: 1000px;   
+    }
+
+    #gifTitle {
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    animation: neonGlow 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    #gifDiv {
+        margin: 0 auto;
+        border-radius: 10px;
+        display: flex;
+    }
+
+    .eachGif {
+        margin: 10px;
+        border: #bcf647 dotted 5px;
+        background-color:  rgba(214, 100, 209, 0.5);
+        display: flow-root;
+    }
+
+    #instructions {
+        color: #bcf647;
+        font: inherit;
+        font-size: 20px;
+        margin-bottom: 0px;
     }
