@@ -259,7 +259,11 @@
     }
 
 /* pick a gif page */
-    #gifBody {
+.clearfix::after {
+overflow: auto;
+  }
+
+#gifBody {
         color: #fff;
         text-align: center;
         background-color: #17181c;
@@ -280,14 +284,13 @@
     #gifDiv {
         margin: 0 auto;
         border-radius: 10px;
-        display: flex;
     }
 
     .eachGif {
         margin: 10px;
         border: #bcf647 dotted 5px;
         background-color:  rgba(214, 100, 209, 0.5);
-        display: inline-flex;
+        display: inline-block;
     }
 
     #instructions {
