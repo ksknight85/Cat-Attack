@@ -19,10 +19,11 @@
         for (var i = 0; i < 25; i++) {
   
             var gifDiv = $("#gifDiv");
-    
+
 
             var gifEach = $("<div>")
             gifEach.addClass("eachGif")
+          
             //ADD GIF TO IMAGE DIV
             var stillURL = response.data[i].images.fixed_height_still.url;
             var animateURL = response.data[i].images.fixed_height.url;
