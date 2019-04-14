@@ -13,7 +13,8 @@ $(document).ready(function() {
     };
 
     if (!userData.email || !userData.password) {
-      return;
+      alert("Please fill in all the fields.")
+      // return;
     }
 
     // If we have an email and password we run the loginUser function and clear the form
