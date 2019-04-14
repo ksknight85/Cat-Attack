@@ -6,7 +6,8 @@ USE project2;
 CREATE TABLE gifs
 (
   gif_Id INT NOT NULL AUTO_INCREMENT, 
-  url VARCHAR(500), 
+  url VARCHAR(500),
+  wins INTEGER,
   PRIMARY KEY (gif_Id)
 );
 
