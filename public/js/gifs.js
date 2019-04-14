@@ -145,3 +145,6 @@
         
         setInterval(updateGradient, 10);
 
+$.get("/api/user_data", function(data){
+    console.log(data)
+})
