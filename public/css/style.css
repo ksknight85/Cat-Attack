@@ -241,7 +241,9 @@
         font-size: 0.6em;
     }
 
-    .topGifs .favorites profileWins {
+    .topGifs,
+    .favorites, 
+    .profileWins {
         border-radius: 10px;
     }
 
@@ -257,7 +259,15 @@
         padding: 0px;
         margin: 0px;
     }
+    /* profile page */
 
+    .favorites {
+        float: left;
+    }
+
+    .wins {
+        float: right; 
+    }
 /* pick a gif page */
 .clearfix::after {
 overflow: auto;
@@ -302,11 +312,9 @@ overflow: auto;
 
     /* profile page */
 
-    /* .favorites {
-        float: left;
+    .favorites, 
+    .profileWins {
+        margin: 20px;
+        min-height: 500px;
     }
-
-    .wins {
-        float: right; 
-    } */
 
