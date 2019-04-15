@@ -79,7 +79,6 @@ function updateGradient() {
     }
 }
 
-
 setInterval(updateGradient, 10);
 
 var urlGif1
@@ -88,7 +87,7 @@ var urlGif3
 var urlGif4
 
 function game() {
-    $.get("/api/gifs", function(data) {
+    $.get("/api/CHANGEME", function(data) {
         var data0 = data[0]
         var data1 = data[1]
         var data2 = data[2]
@@ -98,13 +97,13 @@ urlGif1 = data0[0].url
 urlGif2 = data1[0].url
 urlGif3 = data2[0].url
 urlGif4 = data2[0].url
-
+console.log(urlGif1, urlGif2, urlGif3, urlGif4)
 })
 
 }
 
 game()
-=======
+
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
@@ -131,4 +130,3 @@ $("#logout").on("click", function(){
       console.log(data)
     });
 })
-
