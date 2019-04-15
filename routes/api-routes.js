@@ -59,6 +59,23 @@ module.exports = function (app) {
     }
   });
 
+  app.get("api/gifs", function (req, res) {
+
+    return res.json(db.gifs)
+  })
+
+  app.post("/api/gifs", function (req, res) {
+    console.log(req.body.id)
+
+    db.Gif.create({
+      url: req.body.url,
+      wins: 0,
+      UserId: req.body.id
+    }).then(function () {
+      res.status(200).end();
+    })
+  });
+
   // Route for pulling gif url data from gif table
   app.get("/api/CHANGEME", function (req, res) {
 

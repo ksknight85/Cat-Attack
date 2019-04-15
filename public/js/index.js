@@ -5,11 +5,13 @@ $(document).ready(function () {
     // and updates the HTML on the page
 
     $.get("/api/user_data").then(function(data) {
-        
         userData = data.id
         console.log(userData)
         if (userData) {
+            $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
+            $("#goProfile").html(`<div class="navbar-nav"><a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only"></span></a></div>`)
+            $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
            $("#user-name").text(" Player!") 
            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
@@ -101,3 +103,30 @@ console.log(urlGif1, urlGif2, urlGif3, urlGif4)
 }
 
 game()
+
+// GAME FUNCTIONALITY
+$(".gif").on("click", function (event) {
+    if ((this.id === "gif1") || (this.id === "gif2")) {
+        $("#winOf12").attr("src", this.src)
+    }
+    else if ((this.id === "gif3") || (this.id === "gif4")) {
+        $("#winOf34").attr("src", this.src)
+    }
+    else if ((this.id === "winOf12") || (this.id === "winOf34")) {
+        if ($("#winOf12").attr("src") === undefined || $("#winOf34").attr("src") === undefined) {
+            return
+        }
+        else {
+            $("#winner").attr("src", this.src)
+        }
+    }
+});
+
+setInterval(updateGradient, 10);
+
+
+$("#logout").on("click", function(){
+    $.get("/logout").then(function(data) {
+      console.log(data)
+    });
+})
