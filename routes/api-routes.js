@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var Sequelize = require("sequelize")
+const Op = Sequelize.Op;
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -57,22 +59,59 @@ module.exports = function (app) {
     }
   });
 
-  app.get("api/gifs", function (req, res) {
-    return res.json(db.gifs)
+
+  // Route for pulling gif url data from gif table
+  app.get("/api/gifs", function (req, res) {
+
+
+    db.Gif.findAll().then(function (gifs) {
+      var randomNumber = []
+      var chosenGifs = []
+
+      while (randomNumber.length < 4) {
+        var number = (Math.floor(Math.random() * gifs.length) + 1);
+        if (!randomNumber.includes(number)) {
+          randomNumber.push(number)
+        } 
+        
+      }
+
+        db.Gif.findAll({
+          where: {
+            gif_ID: randomNumber[0]
+          }
+        }).then(function (data) {
+          chosenGifs.push(data)         
+        })
+
+        db.Gif.findAll({
+          where: {
+            gif_ID: randomNumber[1]
+          }
+        }).then(function (data) {
+          chosenGifs.push(data)         
+        })
+
+        db.Gif.findAll({
+          where: {
+            gif_ID: randomNumber[2]
+          }
+        }).then(function (data) {
+          chosenGifs.push(data)         
+        })
+
+        db.Gif.findAll({
+          where: {
+            gif_ID: randomNumber[3]
+          }
+        }).then(function (data) {
+          chosenGifs.push(data)   
+          console.log(chosenGifs)
+          return res.json(chosenGifs)      
+        })
+
+      })
+
   })
-  app.post("/api/gifs", function (req, res) {
-
-    db.Gif.create({
-      url: req.body.url,
-      wins: 0,
-      UserId: req.body.id
-    }).then(function () {
-      res.status(200).end();
-    })
-  });
-
-
-
-
 
 };

@@ -28,14 +28,7 @@ $("#getGifs").on("click", function (event) {
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=cat&offset=" + offset + "&api_key=pUQxAeyd7mmJQpZYgXXUmvzxHWPi1ZD6";
 
-    $.ajax({
-        method: "GET",
-        url: queryURL
-    }).then(function (response) {
-        for (var i = 0; i < 25; i++) {
 
-            var gifDiv = $("#gifDiv");
-          
   $.ajax({
     method: "GET",
     url: queryURL
@@ -69,6 +62,7 @@ $("#getGifs").on("click", function (event) {
       gifDiv.append(gifEach)
     };
   });
+
 })
 
 //pause and animate
@@ -165,3 +159,4 @@ $("#logout").on("click", function () {
         console.log(data)
     });
 })
+

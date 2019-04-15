@@ -1,0 +1,2 @@
+INSERT INTO gifs (url, wins) 
+VALUES ('https://media3.giphy.com/media/8vQSQ3cNXuDGo/200.gif', 0), ('https://media3.giphy.com/media/xBAreNGk5DapO/200.gif', 0), ('https://media3.giphy.com/media/3oriO0OEd9QIDdllqo/200.gif', 0), ('https://media1.giphy.com/media/GFHJXPCoVQEec/200.gif', 0);
