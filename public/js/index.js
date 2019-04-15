@@ -1,12 +1,25 @@
 var userData
 
-$(document).ready(function() {
+$(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
+
     $.get("/api/user_data").then(function(data) {
+<<<<<<< HEAD
       userData = data.id
+=======
+        
+        userData = data.id
+        console.log(userData)
+        if (userData) {
+            $("#user-name").text(" " + data.firstName)
+        } else {
+           $("#user-name").text(" Player!") 
+           $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
+        }
+>>>>>>> 827e6b39c8f730e9d8f0827e94358e81a50065ea
     });
-  });
+});
 
 
 var colors = new Array(
