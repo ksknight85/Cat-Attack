@@ -1,6 +1,7 @@
 var userData
 
 $(document).ready(function () {
+
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
     $.get("/api/user_data").then(function (data) {
@@ -34,6 +35,7 @@ $("#getGifs").on("click", function (event) {
         for (var i = 0; i < 25; i++) {
 
             var gifDiv = $("#gifDiv");
+<<<<<<< HEAD
 
 
             var gifEach = $("<div>")
@@ -67,6 +69,42 @@ $("#getGifs").on("click", function (event) {
         };
     });
 
+=======
+          
+  $.ajax({
+    method: "GET",
+    url: queryURL
+  }).then(function (response) {
+    for (var i = 0; i < 25; i++) {
+
+      var gifDiv = $("#gifDiv");
+      var gifEach = $("<div>")
+      gifEach.addClass("eachGif")
+
+      //ADD GIF TO IMAGE DIV
+      var stillURL = response.data[i].images.fixed_height_still.url;
+      var animateURL = response.data[i].images.fixed_height.url;
+      var gifImg = $("<img>");
+
+      gifEach.append(gifImg)
+
+      var gifButton = $("<button>Pick me!</button>")
+      gifButton.addClass("selectMe raise")
+      gifButton.attr("data-id", userData)
+      gifButton.attr("data-url", animateURL)
+      gifEach.append(gifButton)
+
+
+      //ADD STILLIMAGE, ANIMATES & DATA SOURCE
+      gifImg.attr("src", stillURL);
+      gifImg.attr("data-still", stillURL);
+      gifImg.attr("data-animate", animateURL);
+      gifImg.attr("data-state", "still");
+      gifImg.addClass("gif");
+      gifDiv.append(gifEach)
+    };
+  });
+>>>>>>> 7b2b414397c77273d3f6ddf16abc7733999f4ce0
 })
 
 //pause and animate
@@ -82,31 +120,28 @@ $("#gifDiv").on("click", ".gif", function () {
 
 })
 
-$(".selectMe").on("click", ".selectMe", function () {
-    var picked = $(this).attr("data-url");
+$("#gifDiv").on("click", ".selectMe", function () {
+  var picked = $(this).attr("data-url")
+  var userId= $(this).attr("data-id")
 
-
-    //posting selected gif to api/gifs
-    $.ajax("/api/gifs", {
-        type: "POST",
-        data: picked
-    }).then(
-        function () {
-            console.log("created new burger");
-            // Reload the page to get the updated list
-            location.reload();
-        }
-    );
+  var chosen = {
+    url: picked,
+    id: userId
+  } 
+$.post("/api/gifs", chosen, function(data) {
+  console.log(data) 
+})
 });
+
 
 //rainbow gradient div
 var colors = new Array(
-    [62, 35, 255],
-    [60, 255, 60],
-    [255, 35, 98],
-    [45, 175, 230],
-    [255, 0, 255],
-    [255, 128, 0]);
+  [62, 35, 255],
+  [60, 255, 60],
+  [255, 35, 98],
+  [45, 175, 230],
+  [255, 0, 255],
+  [255, 128, 0]);
 
 var step = 0;
 //color table indices for: 
@@ -168,4 +203,7 @@ $("#logout").on("click", function () {
         console.log(data)
     });
 })
+<<<<<<< HEAD
 >>>>>>> 827e6b39c8f730e9d8f0827e94358e81a50065ea
+=======
+>>>>>>> 7b2b414397c77273d3f6ddf16abc7733999f4ce0
