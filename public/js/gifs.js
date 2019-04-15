@@ -42,7 +42,7 @@ $(document).ready(function() {
   
             var gifButton = $("<button>Pick me!</button>")
             gifButton.addClass("selectMe raise")
-            gifButton.attr("data-id", userData.id)
+            gifButton.attr("data-id", userData)
             gifButton.attr("data-url", animateURL)
             gifEach.append(gifButton)
 
@@ -155,5 +155,3 @@ $(document).ready(function() {
         
         setInterval(updateGradient, 10);
 
-
-          
