@@ -1,5 +1,14 @@
+var userData
 
- 
+$(document).ready(function() {
+    // This file just does a GET request to figure out which user is logged in
+    // and updates the HTML on the page
+    $.get("/api/user_data").then(function(data) {
+      userData = data.id
+      console.log(userData)
+    });
+  });
+
     var reactionCounter = 0
 
     $("#getGifs").on("click", function (event) {
@@ -33,7 +42,7 @@
   
             var gifButton = $("<button>Pick me!</button>")
             gifButton.addClass("selectMe raise")
-            gifButton.attr("data-id", [i] + 1)
+            gifButton.attr("data-id", userData.id)
             gifButton.attr("data-url", animateURL)
             gifEach.append(gifButton)
 
@@ -71,7 +80,7 @@
         var picked = $(this).attr("data-url");
 
 
-
+//posting selected gif to api/gifs
         $.ajax("/api/gifs", {
             type: "POST",
             data: picked
@@ -84,6 +93,7 @@
           );
         });
   
+//rainbow gradient div
         var colors = new Array(
             [62, 35, 255],
             [60, 255, 60],
@@ -145,6 +155,5 @@
         
         setInterval(updateGradient, 10);
 
-$.get("/api/user_data", function(data){
-    console.log(data)
-})
+
+          
