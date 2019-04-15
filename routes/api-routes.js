@@ -57,21 +57,21 @@ module.exports = function (app) {
     }
   });
 
-  app.get("api/gifs", function (req,res){
+  app.get("api/gifs", function (req, res) {
     return res.json(db.gifs)
   })
   app.post("/api/gifs", function (req, res) {
-    console.log("post rout api/gifs" + req.body.id);
-    var tempID = req.body.id;
-    var tempURL = req.body.url;
-    var temp = {
-      gif_Id: tempID,
-      url: tempURL
-    }
-    res.json(temp) 
+
+    db.Gif.create({
+      url: req.body.url,
+      wins: 0,
+      UserId: req.body.id
+    }).then(function () {
+      res.status(200).end();
+    })
   });
 
-  
+
 
 
 

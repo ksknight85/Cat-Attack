@@ -5,7 +5,7 @@ $(document).ready(function () {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
     userData = data.id
-    console.log("userdata", userData)
+
   });
 
 });
@@ -15,7 +15,6 @@ var reactionCounter = 0
 $("#getGifs").on("click", function (event) {
   event.preventDefault();
   $("#gifDiv").empty();
-  console.log("Generate onClick = Hit")
   reactionCounter++
 
   var offset = (reactionCounter * 10);
@@ -79,7 +78,6 @@ $("#gifDiv").on("click", ".gif", function () {
 })
 
 $("#gifDiv").on("click", ".selectMe", function () {
-  console.log("PickMe OnClick = Hit");
   var picked = $(this).attr("data-url")
   var userId= $(this).attr("data-id")
 
@@ -87,31 +85,9 @@ $("#gifDiv").on("click", ".selectMe", function () {
     url: picked,
     id: userId
   } 
-console.log("picked 1 ", picked)
-console.log("userId 1 ", userId)
-  //posting selected gif to api/gifs
-  // $.post("/api/gifs", picked, function () {
-  //     console.log("picked url", picked);
-  //     // Reload the page to get the updated list
-  //     location.reload();
-  //   }
-  // );
-  console.log("chosen", chosen)
-//   $.ajax("/api/gifs", {
-//     type: "POST", 
-//     data: chosen
-//   }).then(function(){
- 
-//     // Reload the page to get the updated list
-//     location.reload();
-//   }
-// );
-
-$.post("/api/gifs", {
-  url: picked,
-  id: userId
-}, function(data) {
+$.post("/api/gifs", chosen, function(data) {
   console.log(data)
+  
 })
 });
 
