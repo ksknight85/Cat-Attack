@@ -8,6 +8,7 @@ $(document).ready(function () {
         userData = data.id
         console.log(userData)
         if (userData) {
+            $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only">(current)</span></a></div>`)
             $("#user-name").text(" " + data.firstName)
         } else {
            $("#user-name").text(" Player!") 
