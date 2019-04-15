@@ -66,7 +66,6 @@ $("#getGifs").on("click", function (event) {
 
         };
     });
-
 })
 
 //pause and animate
@@ -164,3 +163,4 @@ $("#logout").on("click", function () {
         console.log(data)
     });
 })
+

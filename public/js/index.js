@@ -5,10 +5,10 @@ $(document).ready(function () {
     // and updates the HTML on the page
 
     $.get("/api/user_data").then(function(data) {
-        
         userData = data.id
         console.log(userData)
         if (userData) {
+            $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only">(current)</span></a></div>`)
             $("#user-name").text(" " + data.firstName)
         } else {
            $("#user-name").text(" Player!") 
@@ -77,6 +77,32 @@ function updateGradient() {
     }
 }
 
+
+setInterval(updateGradient, 10);
+
+var urlGif1
+var urlGif2
+var urlGif3
+var urlGif4
+
+function game() {
+    $.get("/api/gifs", function(data) {
+        var data0 = data[0]
+        var data1 = data[1]
+        var data2 = data[2]
+        var data3 = data[3]
+
+urlGif1 = data0[0].url
+urlGif2 = data1[0].url
+urlGif3 = data2[0].url
+urlGif4 = data2[0].url
+
+})
+
+}
+
+game()
+=======
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
@@ -103,3 +129,4 @@ $("#logout").on("click", function(){
       console.log(data)
     });
 })
+

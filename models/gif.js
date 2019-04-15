@@ -1,5 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Gif = sequelize.define("Gif", {
+    gif_ID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,6 +17,16 @@ module.exports = function(sequelize, DataTypes) {
     wins: {
       type: DataTypes.INTEGER,
       default: 0,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW()
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW()
     }
   });
 
