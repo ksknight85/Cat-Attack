@@ -8,8 +8,10 @@ $(document).ready(function () {
         userData = data.id
         console.log(userData)
         if (userData) {
-            $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only">(current)</span></a></div>`)
+            $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
+            $("#goProfile").html(`<div class="navbar-nav"><a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only"></span></a></div>`)
+            $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
            $("#user-name").text(" Player!") 
            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
