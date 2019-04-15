@@ -1,9 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   var Favorite = sequelize.define("Favorite", {
-    gifId: {
-      type: DataTypes.INTEGER,
-      default: 0,
-    },
     url: {
       type: DataTypes.STRING,
       allowNull: false,

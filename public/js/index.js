@@ -1,8 +1,9 @@
 var userData
 
-$(document).ready(function() {
+$(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
+
     $.get("/api/user_data").then(function(data) {
         
         userData = data.id
@@ -14,7 +15,7 @@ $(document).ready(function() {
            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
-  });
+});
 
 
 var colors = new Array(
@@ -75,6 +76,24 @@ function updateGradient() {
 
     }
 }
+
+// GAME FUNCTIONALITY
+$(".gif").on("click", function (event) {
+    if ((this.id === "gif1") || (this.id === "gif2")) {
+        $("#winOf12").attr("src", this.src)
+    }
+    else if ((this.id === "gif3") || (this.id === "gif4")) {
+        $("#winOf34").attr("src", this.src)
+    }
+    else if ((this.id === "winOf12") || (this.id === "winOf34")) {
+        if ($("#winOf12").attr("src") === undefined || $("#winOf34").attr("src") === undefined) {
+            return
+        }
+        else {
+            $("#winner").attr("src", this.src)
+        }
+    }
+});
 
 setInterval(updateGradient, 10);
 
