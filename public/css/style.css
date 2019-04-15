@@ -320,3 +320,12 @@ overflow: auto;
         min-height: 500px;
     }
 
+ /* login page */
+
+.loginContainer {
+    margin: 0 auto;
+    padding: 20px;
+    width: 50%;
+    margin-top: 40px;
+    border-radius: 10px;
+}

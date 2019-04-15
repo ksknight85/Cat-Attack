@@ -5,9 +5,6 @@ $(document).ready(function () {
     // and updates the HTML on the page
 
     $.get("/api/user_data").then(function(data) {
-<<<<<<< HEAD
-      userData = data.id
-=======
         
         userData = data.id
         console.log(userData)
@@ -17,7 +14,6 @@ $(document).ready(function () {
            $("#user-name").text(" Player!") 
            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
->>>>>>> 827e6b39c8f730e9d8f0827e94358e81a50065ea
     });
 });
 
@@ -89,7 +85,7 @@ var urlGif3
 var urlGif4
 
 function game() {
-    $.get("/api/gifs", function(data) {
+    $.get("/api/CHANGEME", function(data) {
         var data0 = data[0]
         var data1 = data[1]
         var data2 = data[2]
@@ -99,7 +95,7 @@ urlGif1 = data0[0].url
 urlGif2 = data1[0].url
 urlGif3 = data2[0].url
 urlGif4 = data2[0].url
-
+console.log(urlGif1, urlGif2, urlGif3, urlGif4)
 })
 
 }

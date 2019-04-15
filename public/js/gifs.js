@@ -28,49 +28,6 @@ $("#getGifs").on("click", function (event) {
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=cat&offset=" + offset + "&api_key=pUQxAeyd7mmJQpZYgXXUmvzxHWPi1ZD6";
 
-    $.ajax({
-        method: "GET",
-        url: queryURL
-    }).then(function (response) {
-        for (var i = 0; i < 25; i++) {
-
-            var gifDiv = $("#gifDiv");
-<<<<<<< HEAD
-
-
-            var gifEach = $("<div>")
-            gifEach.addClass("eachGif")
-
-            //ADD GIF TO IMAGE DIV
-            var stillURL = response.data[i].images.fixed_height_still.url;
-            var animateURL = response.data[i].images.fixed_height.url;
-            var gifImg = $("<img>");
-
-            gifEach.append(gifImg)
-
-            var gifButton = $("<button>Pick me!</button>")
-            gifButton.addClass("selectMe raise")
-            gifButton.attr("data-id", userData)
-            gifButton.attr("data-url", animateURL)
-            gifEach.append(gifButton)
-
-
-            //ADD STILLIMAGE, ANIMATES & DATA SOURCE
-            gifImg.attr("src", stillURL);
-            gifImg.attr("data-still", stillURL);
-            gifImg.attr("data-animate", animateURL);
-            gifImg.attr("data-state", "still");
-            gifImg.addClass("gif");
-
-
-            gifDiv.append(gifEach)
-
-
-        };
-    });
-
-=======
-          
   $.ajax({
     method: "GET",
     url: queryURL
@@ -104,7 +61,6 @@ $("#getGifs").on("click", function (event) {
       gifDiv.append(gifEach)
     };
   });
->>>>>>> 7b2b414397c77273d3f6ddf16abc7733999f4ce0
 })
 
 //pause and animate
@@ -191,8 +147,7 @@ function updateGradient() {
         colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
         colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
 
-<<<<<<< HEAD
-=======
+
     }
 }
 
@@ -203,7 +158,4 @@ $("#logout").on("click", function () {
         console.log(data)
     });
 })
-<<<<<<< HEAD
->>>>>>> 827e6b39c8f730e9d8f0827e94358e81a50065ea
-=======
->>>>>>> 7b2b414397c77273d3f6ddf16abc7733999f4ce0
+

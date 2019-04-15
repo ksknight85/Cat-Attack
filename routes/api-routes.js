@@ -4,11 +4,6 @@ var passport = require("../config/passport");
 var Sequelize = require("sequelize")
 const Op = Sequelize.Op;
 
-<<<<<<< HEAD
-// var Gif = require("../models/gif.js")
-
-=======
->>>>>>> 7b2b414397c77273d3f6ddf16abc7733999f4ce0
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -65,7 +60,7 @@ module.exports = function (app) {
   });
 
   // Route for pulling gif url data from gif table
-  app.get("/api/gifs", function (req, res) {
+  app.get("/api/CHANGEME", function (req, res) {
 
 
     db.Gif.findAll().then(function (gifs) {
