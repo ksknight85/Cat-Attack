@@ -1,4 +1,4 @@
-var userData
+var userData;
 
 $(document).ready(function () {
 
@@ -21,7 +21,6 @@ var reactionCounter = 0
 $("#getGifs").on("click", function (event) {
     event.preventDefault();
     $("#gifDiv").empty();
-    console.log("hi")
     reactionCounter++
 
     var offset = (reactionCounter * 10);
@@ -35,40 +34,39 @@ $("#getGifs").on("click", function (event) {
         for (var i = 0; i < 25; i++) {
 
             var gifDiv = $("#gifDiv");
-          
-  $.ajax({
-    method: "GET",
-    url: queryURL
-  }).then(function (response) {
-    for (var i = 0; i < 25; i++) {
-
-      var gifDiv = $("#gifDiv");
-      var gifEach = $("<div>")
-      gifEach.addClass("eachGif")
-
-      //ADD GIF TO IMAGE DIV
-      var stillURL = response.data[i].images.fixed_height_still.url;
-      var animateURL = response.data[i].images.fixed_height.url;
-      var gifImg = $("<img>");
-
-      gifEach.append(gifImg)
-
-      var gifButton = $("<button>Pick me!</button>")
-      gifButton.addClass("selectMe raise")
-      gifButton.attr("data-id", userData)
-      gifButton.attr("data-url", animateURL)
-      gifEach.append(gifButton)
 
 
-      //ADD STILLIMAGE, ANIMATES & DATA SOURCE
-      gifImg.attr("src", stillURL);
-      gifImg.attr("data-still", stillURL);
-      gifImg.attr("data-animate", animateURL);
-      gifImg.attr("data-state", "still");
-      gifImg.addClass("gif");
-      gifDiv.append(gifEach)
-    };
-  });
+            var gifEach = $("<div>")
+            gifEach.addClass("eachGif")
+
+            //ADD GIF TO IMAGE DIV
+            var stillURL = response.data[i].images.fixed_height_still.url;
+            var animateURL = response.data[i].images.fixed_height.url;
+            var gifImg = $("<img>");
+
+            gifEach.append(gifImg)
+
+            var gifButton = $("<button>Pick me!</button>")
+            gifButton.addClass("selectMe raise")
+            gifButton.attr("data-id", userData)
+            gifButton.attr("data-url", animateURL)
+            gifEach.append(gifButton)
+
+
+            //ADD STILLIMAGE, ANIMATES & DATA SOURCE
+            gifImg.attr("src", stillURL);
+            gifImg.attr("data-still", stillURL);
+            gifImg.attr("data-animate", animateURL);
+            gifImg.attr("data-state", "still");
+            gifImg.addClass("gif");
+
+
+            gifDiv.append(gifEach)
+
+
+        };
+    });
+
 })
 
 //pause and animate
@@ -92,6 +90,7 @@ $("#gifDiv").on("click", ".selectMe", function () {
     url: picked,
     id: userId
   } 
+  console.log(chosen)
 $.post("/api/gifs", chosen, function(data) {
   console.log(data) 
 })

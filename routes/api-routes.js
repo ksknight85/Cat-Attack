@@ -58,9 +58,12 @@ module.exports = function (app) {
   });
 
   app.get("api/gifs", function (req, res) {
+
     return res.json(db.gifs)
   })
+
   app.post("/api/gifs", function (req, res) {
+    console.log(req.body.id)
 
     db.Gif.create({
       url: req.body.url,
@@ -70,9 +73,4 @@ module.exports = function (app) {
       res.status(200).end();
     })
   });
-
-
-
-
-
 };
