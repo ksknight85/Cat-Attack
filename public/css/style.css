@@ -241,7 +241,9 @@
         font-size: 0.6em;
     }
 
-    .topGifs {
+    .topGifs,
+    .favorites, 
+    .profileWins {
         border-radius: 10px;
     }
 
@@ -257,7 +259,15 @@
         padding: 0px;
         margin: 0px;
     }
+    /* profile page */
 
+    .favorites {
+        float: left;
+    }
+
+    .wins {
+        float: right; 
+    }
 /* pick a gif page */
 .clearfix::after {
 overflow: auto;
@@ -284,6 +294,8 @@ overflow: auto;
     #gifDiv {
         margin: 0 auto;
         border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .eachGif {
@@ -299,3 +311,12 @@ overflow: auto;
         font-size: 20px;
         margin-bottom: 0px;
     }
+
+    /* profile page */
+
+    .favorites, 
+    .profileWins {
+        margin: 20px;
+        min-height: 500px;
+    }
+

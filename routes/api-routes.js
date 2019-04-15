@@ -52,6 +52,7 @@ module.exports = function(app) {
         id: req.user.id,
         firstName: req.user.firstName,
         lastName: req.user.lastName
+        wins: req.user.wins
       });
     }
   });
