@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Cat Attack!</title>
 </head>
-
 <body id="indexBody">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/members">Hello<span id="user-name">!</span></a>
@@ -30,23 +28,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only">(current)</span></a>
+            <div id="goProfile">
+
             </div>
+            <!-- <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only">(current)</span></a>
+            </div> -->
             <div id="catSearch">
 
             </div>
+            <!-- <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./gifs.html">Pick a Cat<span class="sr-only">(current)</span></a>
+                  </div> -->
+            <div id="logoutButton">
 
-                  <div class="navbar-nav">
-                    <a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only">(current)</span></a>
-                  </div>
+            </div>      
+                  
         </div>
     </nav>
     <p id="title">Cat Attack!</p>
     <div class="buttons">
         <h2 id="code">Wanna add your own cat to the tournament? <i class="em em-heart_eyes_cat"></i></h2>
         <div id="signuplogin">
-
         </div>    
     </div>
     <div class="row">
@@ -58,47 +61,40 @@
                         <li>
                             <ul>
                                 <li>
-                                    <div class="game">
-                                        <div>Team 1</div>
-                                        <div>Team 8</div>
+                                    <div class="game match1 level1">
+                                        <div><img src="https://media3.giphy.com/media/8vQSQ3cNXuDGo/200.gif" class="gif" id="gif1">Team 1</div>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="game">
-                                        <div>Team 3</div>
-                                        <div>Team 6</div>
+                                    <div class="game match1 level1">
+                                        <div><img src="https://media3.giphy.com/media/xBAreNGk5DapO/200.gif" class="gif" id="gif2">Team 2</div>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="game">
-                                <div>Team 1</div>
-                                <div>Team 3</div>
+                            <div class="game level2">
+                                <div><img class="gif" id="winOf12">Winner match 1</div>
                             </div>
                         </li>
                         <li>
                             <ul>
                                 <li>
-                                    <div class="game">
-                                        <div>Team 4</div>
-                                        <div>Team 5</div>
+                                    <div class="game match2 level1">
+                                        <div><img src="https://media0.giphy.com/media/2uIkZyLx04rVGS55gt/200.gif" class="gif" id="gif3">Team 3</div>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="game">
-                                        <div>Team 2</div>
-                                        <div>Team 7</div>
+                                    <div class="game match2 level1">
+                                        <div><img src="https://media0.giphy.com/media/NjevnbNiUmeLm/200.gif" class="gif" id="gif4">Team 4</div>
                                     </div>
                                 </li>
                             </ul>
-                            <div class="game">
-                                <div>Team 2</div>
-                                <div>Team 4</div>
+                            <div class="game level2">
+                                <div><img class="gif" id="winOf34">Winner match 2</div>
                             </div>
                         </li>
                     </ul>
-                    <div class="game">
-                        <div>Team 1</div>
-                        <div>Team 2</div>
+                    <div class="game winner">
+                        <div><img class="gif" id="winner">Winner</div>
                     </div>
                 </li>
             </ul>
@@ -107,10 +103,7 @@
             <p id="top">Coolest Cats:</p>
         </div>
     </div>
-
     <div class="footer-copyright text-center py-3">© 2018 Copyright: Jenn, Dylan, Kevin & Haley</div>
-
  <script src="js/index.js"></script>  
 </body>
-
 </html>
