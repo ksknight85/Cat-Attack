@@ -10,7 +10,7 @@ $(document).ready(function () {
     game()
 
     $.get("/api/user_data").then(function(data) {
-        
+
         userData = data.id
         console.log(userData)
         if (userData) {
