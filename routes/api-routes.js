@@ -129,4 +129,15 @@ module.exports = function (app) {
       })
 
   })
+
+app.get("/api/winners", function (req, res){
+  db.Gif.findAll({
+    order: [
+      ["wins", "DESC"]
+    ]
+  }).then(function(gifs){
+    console.log(`----------------${gifs}------------------`)
+    return res.json(gifs)
+  })
+})
 };
