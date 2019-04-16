@@ -83,7 +83,7 @@ module.exports = function (app) {
       var chosenGifs = []
 
       if (gifs.length < 4){
-        return res.status(500).end();
+        return bares.status(500).end();
       }
 
       while (randomNumber.length < 4) {
