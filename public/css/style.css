@@ -264,17 +264,8 @@
     .gradient {
         width: 100%;
         padding: 0px;
-        margin: 0px;
-    }
-    /* profile page */
-
-    .favorites {
-        float: left;
     }
 
-    .wins {
-        float: right; 
-    }
 /* pick a gif page */
 .clearfix::after {
 overflow: auto;
@@ -321,10 +312,9 @@ overflow: auto;
 
     /* profile page */
 
-    .favorites, 
-    .profileWins {
-        margin: 20px;
+    .favorites{
         min-height: 500px;
+        margin: 20px;
     }
 
  /* login page */
@@ -347,4 +337,9 @@ overflow: auto;
 
 .gif {
     width: 100%
+}
+
+#profileRow {
+    justify-content: center;
+    text-align: center
 }
