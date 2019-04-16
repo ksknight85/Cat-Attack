@@ -8,7 +8,7 @@ $(document).ready(function() {
     // console.log(data)
     $(".member-name").text(data.firstName);
     userData = data.id
-    // console.log(userData)
+    console.log(userData)
     if (userData) {
         $("#user-name").text(" " + data.firstName)
     } else {
