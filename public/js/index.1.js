@@ -4,24 +4,26 @@ var silver
 var bronze
 var winnersArray = []
 
+
 $(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
 
-    $.get("/api/user_data").then(function(data) {
-        
+    $.get("/api/user_data").then(function (data) {
+        game()
         userData = data.id
-        console.log(userData)
+
         if (userData) {
             $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
             $("#goProfile").html(`<div class="navbar-nav"><a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only"></span></a></div>`)
             $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
-           $("#user-name").text(" Player!") 
-           $("#signuplogin").html(` <h2 id="code">Wanna add your own cat to the tournament? <i class="em em-heart_eyes_cat"></i></h2><a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
+            $("#user-name").text(" Player!")
+            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
+
     $.get("/api/winners").then(function (data) {
         for (var i = 0; i < 3; i++) {
             var short = data[i]
@@ -100,6 +102,27 @@ function updateGradient() {
 
 setInterval(updateGradient, 10);
 
+
+var urlGif1
+var urlGif2
+var urlGif3
+var urlGif4
+
+function game() {
+    $.get("/api/CHANGEME", function (data) {
+        var data0 = data[0]
+        var data1 = data[1]
+        var data2 = data[2]
+        var data3 = data[3]
+
+        urlGif1 = data0[0].url
+        urlGif2 = data1[0].url
+        urlGif3 = data2[0].url
+        urlGif4 = data2[0].url
+        console.log(urlGif1, urlGif2, urlGif3, urlGif4)
+    })
+}
+
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
@@ -126,37 +149,24 @@ $(".gif").on("click", function (event) {
     }
 });
 
-$("#results-modal").on("click", "#addFav", function (){
+$("#results-modal").on("click", "#addFav", function () {
     var url = $(this).attr("data-url")
     console.log("addfav URL", url)
     $.post("/api/fav", {
         url: url,
         userId: userData
-    },function(data) {
+    }, function (data) {
         console.log(data)
     })
     // console.log(url)
 })
 
-var urlGif1
-var urlGif2
-var urlGif3
-var urlGif4
+$("#logout").on("click", function () {
+    $.get("/logout").then(function (data) {
+        console.log(data)
+    });
+})
 
-function game() {
-    $.get("/api/CHANGEME", function (data) {
-        var data0 = data[0]
-        var data1 = data[1]
-        var data2 = data[2]
-        var data3 = data[3]
-
-        urlGif1 = data0[0].url
-        urlGif2 = data1[0].url
-        urlGif3 = data2[0].url
-        urlGif4 = data2[0].url
-        console.log(urlGif1, urlGif2, urlGif3, urlGif4)
-    })
-}
 function populateImages() {
     $("#gif1").attr("src", urlGif1);
     $("#gif2").attr("src", urlGif2);
@@ -178,11 +188,4 @@ $("#reset").on("click", function (event) {
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
-})
-
-
-$("#logout").on("click", function(){
-    $.get("/logout").then(function(data) {
-      console.log(data)
-    });
 })
