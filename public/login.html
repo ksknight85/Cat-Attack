@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,17 +20,6 @@
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Login</title>
-=======
-<head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-  crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
->>>>>>> 263e0279cd5073d47edd73aeeab97d270b15fcd8
 </head>
 
 <body id=gifBody>
@@ -40,21 +28,21 @@
   </div>
 </nav>
   <div class="container gradient loginContainer">
-        <h2>Login Form</h2>
+        <h2 class="top">Login</h2>
         <form class="login">
             <div class="form-group">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1" id="code">Email address</label>
             <input type="email" class="form-control" id="email-input" placeholder="Email">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1" id="code">Password</label>
             <input type="password" class="form-control" id="password-input" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-default">Login</button>
+          <button type="submit" class="raise">Login</button>
         </form>
         <br />
-        <p>Or sign up <a href="/">here</a></p>
+        <p id="code">Or sign up <a href="/signup.html">here</a></p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
