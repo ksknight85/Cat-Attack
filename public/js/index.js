@@ -175,10 +175,10 @@ $("#play").on("click", function (event) {
 
 $("#reset").on("click", function (event) {
     game()
-    $("#gif1").attr("src", "https://thumbs.gfycat.com/InexperiencedMajorAmericancreamdraft-size_restricted.gif");
-    $("#gif2").attr("src", "https://thumbs.gfycat.com/FlatHonorableKillerwhale-size_restricted.gif");
-    $("#gif3").attr("src", "https://media3.giphy.com/media/xFoV7P0JsHwoZvHXP6/source.gif");
-    $("#gif4").attr("src", "https://i.imgflip.com/1tlwsj.gif");
+    $("#gif1").attr("src", "http://123emoji.com/wp-content/uploads/2016/08/2812144885035685763.png");
+    $("#gif2").attr("src", "https://i.pinimg.com/originals/da/30/71/da3071998b4652b86539329a3680aedf.jpg");
+    $("#gif3").attr("src", "https://media.tenor.com/images/a665568e629b3fff3184960ca50d909d/tenor.png");
+    $("#gif4").attr("src", "https://img.clipartimage.com/pusheen-the-cat-eating-pizza-gifs-cat-eating-pizza-clipart-480_270.gif");
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
