@@ -78,8 +78,6 @@ module.exports = function (app) {
 
   // Route for pulling gif url data from gif table
   app.get("/api/CHANGEME", function (req, res) {
-
-
     db.Gif.findAll().then(function (gifs) {
       var randomNumber = []
       var chosenGifs = []
@@ -88,46 +86,57 @@ module.exports = function (app) {
         var number = (Math.floor(Math.random() * gifs.length) + 1);
         if (!randomNumber.includes(number)) {
           randomNumber.push(number)
-        } 
-        
+        }
+
       }
 
-        db.Gif.findAll({
-          where: {
-            gif_ID: randomNumber[0]
-          }
-        }).then(function (data) {
-          chosenGifs.push(data)         
-        })
-
-        db.Gif.findAll({
-          where: {
-            gif_ID: randomNumber[1]
-          }
-        }).then(function (data) {
-          chosenGifs.push(data)         
-        })
-
-        db.Gif.findAll({
-          where: {
-            gif_ID: randomNumber[2]
-          }
-        }).then(function (data) {
-          chosenGifs.push(data)         
-        })
-
-        db.Gif.findAll({
-          where: {
-            gif_ID: randomNumber[3]
-          }
-        }).then(function (data) {
-          chosenGifs.push(data)   
-          console.log(chosenGifs)
-          return res.json(chosenGifs)      
-        })
-
+      db.Gif.findAll({
+        where: {
+          gif_ID: randomNumber[0]
+        }
+      }).then(function (data) {
+        chosenGifs.push(data)
       })
 
+      db.Gif.findAll({
+        where: {
+          gif_ID: randomNumber[1]
+        }
+      }).then(function (data) {
+        chosenGifs.push(data)
+      })
+
+      db.Gif.findAll({
+        where: {
+          gif_ID: randomNumber[2]
+        }
+      }).then(function (data) {
+        chosenGifs.push(data)
+      })
+
+      db.Gif.findAll({
+        where: {
+          gif_ID: randomNumber[3]
+        }
+      }).then(function (data) {
+        chosenGifs.push(data)
+        console.log(chosenGifs)
+        return res.json(chosenGifs)
+      })
+
+    })
+
+  })
+
+  
+  app.get("/api/winners", function (req, res) {
+    db.Gif.findAll({
+      order: [
+        ["wins", "DESC"]
+      ]
+    }).then(function (gifs) {
+      return res.json(gifs)
+    })
   })
 
   app.post("/api/fav", function (req, res) {
@@ -159,4 +168,5 @@ app.get("/api/winners", function (req, res){
     return res.json(gifs)
   })
 })
-};
+
+}
