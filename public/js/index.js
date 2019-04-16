@@ -105,4 +105,6 @@ $("#logout").on("click", function(){
     $.get("/logout").then(function(data) {
       console.log(data)
     });
-})
+});
+
+console.log("hi")
