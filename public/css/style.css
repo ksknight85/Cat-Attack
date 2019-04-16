@@ -227,6 +227,8 @@
         font-size: 3em;
         text-align: center;
         animation: neonGlow 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     #play:hover {

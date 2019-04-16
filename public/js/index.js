@@ -1,12 +1,17 @@
 var userData
+var gold
+var silver
+var bronze
+var winnersArray = []
 
 $(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
-
+    
     $.get("/api/user_data").then(function(data) {
+        game()
         userData = data.id
-        console.log(userData)
+        
         if (userData) {
             $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
@@ -17,6 +22,21 @@ $(document).ready(function () {
            $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
+
+    $.get("/api/winners").then(function(data){
+        for (var i=0; i<3; i++) {
+            var short = data[i]
+            winnersArray.push(short.url)
+
+        }
+        gold = winnersArray[0];
+        silver = winnersArray[1];
+        bronze = winnersArray[2]
+
+        $(".gold").append("<img src=" + gold + ">")
+        $(".silver").append(("<img src=" + silver + ">"))
+        $(".bronze").append("<img src=" + bronze + ">")
+    })
 });
 
 
@@ -102,7 +122,6 @@ console.log(urlGif1, urlGif2, urlGif3, urlGif4)
 
 }
 
-game()
 
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
@@ -129,4 +148,27 @@ $("#logout").on("click", function(){
     $.get("/logout").then(function(data) {
       console.log(data)
     });
+})
+
+function populateImages() {
+    $("#gif1").attr("src", urlGif1);
+    $("#gif2").attr("src", urlGif2);
+    $("#gif3").attr("src", urlGif3);
+    $("#gif4").attr("src", urlGif4);
+}
+
+$("#play").on("click", function(event) {
+    populateImages()
+
+})
+
+$("#reset").on("click", function(event) {
+    game()
+    $("#gif1").attr("src", "https://thumbs.gfycat.com/InexperiencedMajorAmericancreamdraft-size_restricted.gif");
+    $("#gif2").attr("src", "https://thumbs.gfycat.com/FlatHonorableKillerwhale-size_restricted.gif");
+    $("#gif3").attr("src", "https://media3.giphy.com/media/xFoV7P0JsHwoZvHXP6/source.gif");
+    $("#gif4").attr("src", "https://i.imgflip.com/1tlwsj.gif");
+    $("#winOf12").attr("src", "");
+    $("#winOf34").attr("src", "");
+    $("#winner").attr("src", "");
 })
