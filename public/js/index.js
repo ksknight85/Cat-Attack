@@ -14,7 +14,7 @@ $(document).ready(function () {
             $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
            $("#user-name").text(" Player!") 
-           $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
+           $("#signuplogin").html(` <h2 id="code">Wanna add your own cat to the tournament? <i class="em em-heart_eyes_cat"></i></h2><a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
 });
