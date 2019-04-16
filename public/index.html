@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Cat Attack!</title>
+</head>
+
+<body id="indexBody">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/members">Hello<span id="user-name">!</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div id="goProfile">
+
+      </div>
+      <!-- <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="./members.html">Go to Profile<span class="sr-only">(current)</span></a>
+            </div> -->
+      <div id="catSearch">
+
+      </div>
+      <!-- <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./gifs.html">Pick a Cat<span class="sr-only">(current)</span></a>
+                  </div> -->
+      <div id="logoutButton">
+
+
+      </div>
+
+    </div>
+  </nav>
+  <p id="title">Cat Attack!</p>
+  <div class="buttons">
+    <div id="signuplogin">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <p class="top" id="play">Play!</p>
+      <button class="slide" id="reset">Reset</button>
+      <ul class="tournament">
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <div class="game match1 level1">
+                    <div><img src="https://thumbs.gfycat.com/InexperiencedMajorAmericancreamdraft-size_restricted.gif"
+                        class="gif" id="gif1">Team 1</div>
+                  </div>
+                </li>
+                <li>
+                  <div class="game match1 level1">
+                    <div><img src="https://thumbs.gfycat.com/FlatHonorableKillerwhale-size_restricted.gif" class="gif"
+                        id="gif2">Team 2</div>
+                  </div>
+                </li>
+              </ul>
+              <div class="game level2">
+
+                <div><img class="gif" data-toggle="modal" id="winOf12">Winner match 1</div>
+
+              </div>
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <div class="game match2 level1">
+                    <div><img src="https://media3.giphy.com/media/xFoV7P0JsHwoZvHXP6/source.gif" class="gif"
+                        id="gif3">Team 3</div>
+                  </div>
+                </li>
+                <li>
+                  <div class="game match2 level1">
+                    <div><img src="https://i.imgflip.com/1tlwsj.gif" class="gif" id="gif4">Team 4</div>
+                  </div>
+                </li>
+              </ul>
+              <div class="game level2">
+                <div>
+                  <img class="gif" data-toggle="modal" id="winOf34">Winner match 2></div>
+
+              </div>
+            </li>
+          </ul>
+          <div class="game winner">
+            <div><img class="gif" id="winner">Winner</div>
+          </div>
+    </div>
+    </li>
+    </ul>
+    <div class="col-md-3 topGifs gradient">
+      <p class="top">Coolest Cats:</p>
+      <div class="gold">
+        <p id="code">GOLD<i class="em em-first_place_medal"></i></p>
+      </div>
+      <div class="silver">
+        <p id="code">SILVER<i class="em em-second_place_medal"></i></p>
+      </div>
+      <div class="bronze">
+        <p id="code">BRONZE<i class="em em-third_place_medal"></i></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright text-center py-3">© 2018 Copyright: Jenn, Dylan, Kevin & Haley</div>
+  <!-- Modal -->
+  <div id="results-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title"><strong>WINNER!</strong></h2>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <img id="winner-gif">
+        </div>
+        <div class="modal-footer">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
