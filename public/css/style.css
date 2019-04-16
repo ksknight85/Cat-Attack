@@ -118,12 +118,6 @@
         }
     }
 
-
-    .pulse {
-        --color: #ef6eae;
-        --hover: #ef8f6e;
-    }
-
     button {
         color: var(--color);
         transition: 0.25s;
@@ -156,6 +150,18 @@
         --color: #ffa260;
         --hover: #e5ff60;
     }
+
+    .slide:hover, .slide:focus {
+        box-shadow: inset 6.5em 0 0 0 var(--hover);
+      }
+
+      .slide {
+        --color: #8fc866;
+        --hover: #66c887;
+      }
+      .slide {
+          margin-top: 0px;
+      }
 
     button {
         color: var(--color);
@@ -227,12 +233,16 @@
         font-size: 3em;
         text-align: center;
         animation: neonGlow 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     #play:hover {
         color: fuchsia;
         cursor: pointer;
     }
+
+
 
     @keyframes neonGlow {
         0% {
@@ -264,17 +274,8 @@
     .gradient {
         width: 100%;
         padding: 0px;
-        margin: 0px;
-    }
-    /* profile page */
-
-    .favorites {
-        float: left;
     }
 
-    .wins {
-        float: right; 
-    }
 /* pick a gif page */
 .clearfix::after {
 overflow: auto;
@@ -321,10 +322,9 @@ overflow: auto;
 
     /* profile page */
 
-    .favorites, 
-    .profileWins {
-        margin: 20px;
+    .favorites{
         min-height: 500px;
+        margin: 20px;
     }
 
  /* login page */
@@ -347,4 +347,9 @@ overflow: auto;
 
 .gif {
     width: 100%
+}
+
+#profileRow {
+    justify-content: center;
+    text-align: center
 }

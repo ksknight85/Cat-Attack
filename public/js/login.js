@@ -98,3 +98,5 @@ function updateGradient() {
 }
 
 setInterval(updateGradient, 10);
+
+console.log("hi")
