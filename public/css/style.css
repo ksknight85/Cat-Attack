@@ -118,12 +118,6 @@
         }
     }
 
-
-    .pulse {
-        --color: #ef6eae;
-        --hover: #ef8f6e;
-    }
-
     button {
         color: var(--color);
         transition: 0.25s;
@@ -156,6 +150,18 @@
         --color: #ffa260;
         --hover: #e5ff60;
     }
+
+    .slide:hover, .slide:focus {
+        box-shadow: inset 6.5em 0 0 0 var(--hover);
+      }
+
+      .slide {
+        --color: #8fc866;
+        --hover: #66c887;
+      }
+      .slide {
+          margin-top: 0px;
+      }
 
     button {
         color: var(--color);
@@ -235,6 +241,8 @@
         color: fuchsia;
         cursor: pointer;
     }
+
+
 
     @keyframes neonGlow {
         0% {
