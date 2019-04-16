@@ -139,11 +139,34 @@ module.exports = function (app) {
     })
   })
 
-  app.get("/api/wins", function (req, res) {
-    db.Gif.findAll().then(function (gifs) {
-      console.log("--------------", gifs)
-      return res.json(gifs)
-    })
-  })
-};
+  app.post("/api/fav", function (req, res) {
+    console.log(req.body)
 
+    db.Favorite.create({
+      url: req.body.url,
+      UserId: parseInt(req.body.userId)
+    }).then(function () {
+      res.status(200).end();
+    })
+  });
+
+  // app.get("/api/fav", function (req, res) {
+  //   db.Favortie.findAll({
+  //     where: {
+  //       userId: 
+  //     }
+  //   })
+  // });
+
+app.get("/api/winners", function (req, res){
+  db.Gif.findAll({
+    order: [
+      ["wins", "DESC"]
+    ]
+  }).then(function(gifs){
+    console.log(`----------------${gifs}------------------`)
+    return res.json(gifs)
+  })
+})
+
+}

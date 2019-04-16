@@ -7,11 +7,12 @@ var winnersArray = []
 $(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
-    
+    game()
+
     $.get("/api/user_data").then(function(data) {
-        game()
-        userData = data.id
         
+        userData = data.id
+        console.log(userData)
         if (userData) {
             $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
@@ -19,12 +20,11 @@ $(document).ready(function () {
             $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
            $("#user-name").text(" Player!") 
-           $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
+           $("#signuplogin").html(` <h2 id="code">Wanna add your own cat to the tournament? <i class="em em-heart_eyes_cat"></i></h2><a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
-
-    $.get("/api/winners").then(function(data){
-        for (var i=0; i<3; i++) {
+    $.get("/api/winners").then(function (data) {
+        for (var i = 0; i < 3; i++) {
             var short = data[i]
             winnersArray.push(short.url)
 
@@ -101,28 +101,6 @@ function updateGradient() {
 
 setInterval(updateGradient, 10);
 
-var urlGif1
-var urlGif2
-var urlGif3
-var urlGif4
-
-function game() {
-    $.get("/api/CHANGEME", function(data) {
-        var data0 = data[0]
-        var data1 = data[1]
-        var data2 = data[2]
-        var data3 = data[3]
-
-urlGif1 = data0[0].url
-urlGif2 = data1[0].url
-urlGif3 = data2[0].url
-urlGif4 = data3[0].url
-console.log(urlGif1, urlGif2, urlGif3, urlGif4)
-})
-
-}
-
-
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
@@ -137,19 +115,49 @@ $(".gif").on("click", function (event) {
         }
         else {
             $("#winner").attr("src", this.src)
+            if (userData) {
+                $(".modal-footer").html(`<button type="button" id="addFav" class="btn btn-default" data-dismiss="modal">Add to Favorites</button>`)
+                $("#addFav").attr("data-url", this.src)
+                //    gifButton.attr("data-url", animateURL)
+            }
+            $("#winner-gif").attr("src", this.src).css("width", "100%");
+            // Show the modal with the best match
+            $("#results-modal").modal("toggle");
         }
     }
 });
 
-setInterval(updateGradient, 10);
-
-
-$("#logout").on("click", function(){
-    $.get("/logout").then(function(data) {
-      console.log(data)
-    });
+$("#results-modal").on("click", "#addFav", function (){
+    var url = $(this).attr("data-url")
+    console.log("addfav URL", url)
+    $.post("/api/fav", {
+        url: url,
+        userId: userData
+    },function(data) {
+        console.log(data)
+    })
+    // console.log(url)
 })
 
+var urlGif1
+var urlGif2
+var urlGif3
+var urlGif4
+
+function game() {
+    $.get("/api/CHANGEME", function (data) {
+        var data0 = data[0]
+        var data1 = data[1]
+        var data2 = data[2]
+        var data3 = data[3]
+
+        urlGif1 = data0[0].url
+        urlGif2 = data1[0].url
+        urlGif3 = data2[0].url
+        urlGif4 = data2[0].url
+        console.log(urlGif1, urlGif2, urlGif3, urlGif4)
+    })
+}
 function populateImages() {
     $("#gif1").attr("src", urlGif1);
     $("#gif2").attr("src", urlGif2);
@@ -157,12 +165,15 @@ function populateImages() {
     $("#gif4").attr("src", urlGif4);
 }
 
-$("#play").on("click", function(event) {
+$("#play").on("click", function (event) {
+    $("#winOf12").attr("src", "");
+    $("#winOf34").attr("src", "");
+    $("#winner").attr("src", "");
     populateImages()
 
 })
 
-$("#reset").on("click", function(event) {
+$("#reset").on("click", function (event) {
     game()
     $("#gif1").attr("src", "https://thumbs.gfycat.com/InexperiencedMajorAmericancreamdraft-size_restricted.gif");
     $("#gif2").attr("src", "https://thumbs.gfycat.com/FlatHonorableKillerwhale-size_restricted.gif");
@@ -171,4 +182,11 @@ $("#reset").on("click", function(event) {
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
+})
+
+
+$("#logout").on("click", function(){
+    $.get("/logout").then(function(data) {
+      console.log(data)
+    });
 })
