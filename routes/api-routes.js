@@ -129,4 +129,23 @@ module.exports = function (app) {
       })
 
   })
+
+  app.post("/api/fav", function (req, res) {
+    console.log(req.body)
+
+    db.Favorite.create({
+      url: req.body.url,
+      UserId: parseInt(req.body.userId)
+    }).then(function () {
+      res.status(200).end();
+    })
+  });
+
+  // app.get("/api/fav", function (req, res) {
+  //   db.Favortie.findAll({
+  //     where: {
+  //       userId: 
+  //     }
+  //   })
+  // });
 };

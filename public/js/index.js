@@ -80,6 +80,8 @@ function updateGradient() {
     }
 }
 
+setInterval(updateGradient, 10);
+
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
@@ -94,15 +96,35 @@ $(".gif").on("click", function (event) {
         }
         else {
             $("#winner").attr("src", this.src)
+            if (userData) {
+                $(".modal-footer").html(`<button type="button" id="addFav" class="btn btn-default" data-dismiss="modal">Add to Favorites</button>`)
+                $("#addFav").attr("data-url", this.src)
+                //    gifButton.attr("data-url", animateURL)
+            }
+            $("#winner-gif").attr("src", this.src).css("width", "100%");
+            // Show the modal with the best match
+            $("#results-modal").modal("toggle");
         }
     }
 });
 
-setInterval(updateGradient, 10);
-
+$("#results-modal").on("click", "#addFav", function (){
+    var url = $(this).attr("data-url")
+    console.log("addfav URL", url)
+    $.post("/api/fav", {
+        url: url,
+        userId: userData
+    },function(data) {
+        console.log(data)
+    })
+    // console.log(url)
+})
 
 $("#logout").on("click", function(){
     $.get("/logout").then(function(data) {
       console.log(data)
     });
 })
+
+
+
