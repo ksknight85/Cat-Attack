@@ -323,8 +323,10 @@ overflow: auto;
     /* profile page */
 
     .favorites{
-        min-height: 500px;
         margin: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
     }
 
  /* login page */
@@ -352,4 +354,9 @@ overflow: auto;
 #profileRow {
     justify-content: center;
     text-align: center
+}
+
+.profileCats {
+    font-size: 20px;
+    margin: 10px;
 }

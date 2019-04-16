@@ -116,7 +116,7 @@ function game() {
 urlGif1 = data0[0].url
 urlGif2 = data1[0].url
 urlGif3 = data2[0].url
-urlGif4 = data2[0].url
+urlGif4 = data3[0].url
 console.log(urlGif1, urlGif2, urlGif3, urlGif4)
 })
 
