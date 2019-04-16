@@ -1,6 +1,7 @@
-var userData
+var userData;
 
 $(document).ready(function () {
+
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
     $.get("/api/user_data").then(function (data) {
@@ -20,7 +21,6 @@ var reactionCounter = 0
 $("#getGifs").on("click", function (event) {
     event.preventDefault();
     $("#gifDiv").empty();
-    console.log("hi")
     reactionCounter++
 
     var offset = (reactionCounter * 10);
@@ -48,7 +48,7 @@ $("#getGifs").on("click", function (event) {
 
             var gifButton = $("<button>Pick me!</button>")
             gifButton.addClass("selectMe raise")
-            gifButton.attr("data-id", userData.id)
+            gifButton.attr("data-id", userData)
             gifButton.attr("data-url", animateURL)
             gifEach.append(gifButton)
 
@@ -66,7 +66,6 @@ $("#getGifs").on("click", function (event) {
 
         };
     });
-
 })
 
 //pause and animate
@@ -82,31 +81,29 @@ $("#gifDiv").on("click", ".gif", function () {
 
 })
 
-$(".selectMe").on("click", ".selectMe", function () {
-    var picked = $(this).attr("data-url");
+$("#gifDiv").on("click", ".selectMe", function () {
+  var picked = $(this).attr("data-url")
+  var userId= $(this).attr("data-id")
 
-
-    //posting selected gif to api/gifs
-    $.ajax("/api/gifs", {
-        type: "POST",
-        data: picked
-    }).then(
-        function () {
-            console.log("created new burger");
-            // Reload the page to get the updated list
-            location.reload();
-        }
-    );
+  var chosen = {
+    url: picked,
+    id: userId
+  } 
+  console.log(chosen)
+$.post("/api/gifs", chosen, function(data) {
+  console.log(data) 
+})
 });
+
 
 //rainbow gradient div
 var colors = new Array(
-    [62, 35, 255],
-    [60, 255, 60],
-    [255, 35, 98],
-    [45, 175, 230],
-    [255, 0, 255],
-    [255, 128, 0]);
+  [62, 35, 255],
+  [60, 255, 60],
+  [255, 35, 98],
+  [45, 175, 230],
+  [255, 0, 255],
+  [255, 128, 0]);
 
 var step = 0;
 //color table indices for: 
@@ -155,6 +152,7 @@ function updateGradient() {
         //do not pick the same as the current one
         colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
         colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+
 
     }
 }
