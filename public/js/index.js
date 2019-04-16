@@ -5,6 +5,7 @@ $(document).ready(function () {
     // and updates the HTML on the page
 
     $.get("/api/user_data").then(function(data) {
+        
         userData = data.id
         console.log(userData)
         if (userData) {
@@ -14,7 +15,7 @@ $(document).ready(function () {
             $("#logoutButton").html(`<div class="navbar-nav"><a class="nav-item nav-link active" id="logout" href="/logout">Logout<span class="sr-only"></span></a></div>`)
         } else {
            $("#user-name").text(" Player!") 
-           $("#signuplogin").html(`<a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
+           $("#signuplogin").html(` <h2 id="code">Wanna add your own cat to the tournament? <i class="em em-heart_eyes_cat"></i></h2><a href="/login"><button class="pulse">Sign-In</button></a><h3>or</h3><a href="/signup"><button class="raise">Sign-Up</button></a>`)
         }
     });
 });
@@ -78,31 +79,6 @@ function updateGradient() {
 
     }
 }
-
-setInterval(updateGradient, 10);
-
-var urlGif1
-var urlGif2
-var urlGif3
-var urlGif4
-
-function game() {
-    $.get("/api/CHANGEME", function(data) {
-        var data0 = data[0]
-        var data1 = data[1]
-        var data2 = data[2]
-        var data3 = data[3]
-
-urlGif1 = data0[0].url
-urlGif2 = data1[0].url
-urlGif3 = data2[0].url
-urlGif4 = data2[0].url
-console.log(urlGif1, urlGif2, urlGif3, urlGif4)
-})
-
-}
-
-game()
 
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
