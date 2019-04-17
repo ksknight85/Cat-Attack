@@ -2,7 +2,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var Sequelize = require("sequelize");
-var flash = require("connect-flash")
 const Op = Sequelize.Op;
 
 
