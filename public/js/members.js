@@ -113,4 +113,3 @@ console.log(chosen)
     });
   $(this).parent().empty()
 })
-
