@@ -103,7 +103,15 @@ setInterval(updateGradient, 10);
 
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
-    if ((this.id === "gif1") || (this.id === "gif2")) {
+    if (        
+        ($(this).attr("src") === "https://requestreduce.org/images/cat-book-clipart-pusheen.png") ||
+        ($(this).attr("src") === "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMyXdx7Y_b8xZ1IPPvykLCe-rY7VP1pq1ytIti2jQWZWzkx2JYIw") ||
+        ($(this).attr("src") === "https://appstickers-cdn.appadvice.com/1447881598/829772634/e3abc46a590c6f8616e61ca75a2b24d6-1.png") ||
+        ($(this).attr("src") === "http://images6.fanpop.com/image/photos/41200000/-l-p-pusheen-the-cat-41293287-500-336.png")
+        ) {
+        return
+    }
+    else if ((this.id === "gif1") || (this.id === "gif2")) {
             var dataID = $(this).data("id");
         $("#winOf12").attr("src", this.src);
         $("#winOf12").attr("data-ownerId", dataID);
@@ -137,6 +145,7 @@ $(".gif").on("click", function (event) {
             $("#winner-gif").attr("src", this.src).css("width", "100%");
             // Show the modal with the best match
             $("#results-modal").modal("toggle");
+            reset();
         }
     }
 });
@@ -193,9 +202,7 @@ $("#play").on("click", function (event) {
 
 })
 
-$("#reset").on("click", function (event) {
-    game()
-
+function reset() {
     $("#gif1").attr("src", "https://requestreduce.org/images/cat-book-clipart-pusheen.png");
     $("#gif2").attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMyXdx7Y_b8xZ1IPPvykLCe-rY7VP1pq1ytIti2jQWZWzkx2JYIw");
     $("#gif3").attr("src", "https://appstickers-cdn.appadvice.com/1447881598/829772634/e3abc46a590c6f8616e61ca75a2b24d6-1.png");
@@ -204,6 +211,10 @@ $("#reset").on("click", function (event) {
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
+}
+$("#reset").on("click", function (event) {
+    game();
+    reset();
 })
 
 
