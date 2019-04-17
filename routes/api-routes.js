@@ -154,19 +154,39 @@ module.exports = function (app) {
     })
   });
 
-  // app.get("/api/fav", function (req, res) {
-  //   db.Favortie.findAll({
-  //     where: {
-  //       userId: 
-  //     }
-  //   })
-  // });
+  app.get("/api/fav", function (req, res) {
+    db.Favorite.findAll().then(function (favs){
+      return res.json(favs)
+    })
+  });
 
   app.get("/api/wins", function (req, res) {
     db.Gif.findAll().then(function (gifs) {
-      console.log("--------------", gifs)
       return res.json(gifs)
     })
   })
 
+  app.delete("/api/delete", function(req, res) {
+    db.Favorite.destroy({
+      where: {
+        UserId: req.body.UserId,
+        url: req.body.url
+      }
+    }).then(function(deleted) {
+      console.log("----------------", deleted)
+        return res.json(deleted);
+      });
+  });
+
+  app.delete("/api/wins", function(req, res) {
+    db.Gif.destroy({
+      where: {
+        UserId: req.body.UserId,
+        url: req.body.url
+      }
+    }).then(function(deleted) {
+      console.log("----------------", deleted)
+        return res.json(deleted);
+      });
+  });
 }
