@@ -23,7 +23,7 @@ $("#getGifs").on("click", function (event) {
     $("#gifDiv").empty();
     reactionCounter++
 
-    var offset = (reactionCounter * 10);
+    var offset = (reactionCounter * 25);
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=cat&offset=" + offset + "&api_key=pUQxAeyd7mmJQpZYgXXUmvzxHWPi1ZD6";
 
@@ -31,10 +31,10 @@ $("#getGifs").on("click", function (event) {
         method: "GET",
         url: queryURL
     }).then(function (response) {
+        $("#gifDiv").append($('<p id="message">For more options, click "Generate Cat Gifs" again.</p>'))
         for (var i = 0; i < 25; i++) {
 
             var gifDiv = $("#gifDiv");
-
 
             var gifEach = $("<div>")
             gifEach.addClass("eachGif")

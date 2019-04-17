@@ -145,10 +145,16 @@
         --color: #ef6eae;
         --hover: #ef8f6e;
     }
+    .pulse {
+        background-color: #17181c
+    }
 
     .raise {
         --color: #ffa260;
         --hover: #e5ff60;
+    }
+    .raise {
+        background-color: #17181c
     }
 
     .slide:hover, .slide:focus {
@@ -161,6 +167,7 @@
       }
       .slide {
           margin-top: 0px;
+          background-color: #17181c
       }
 
     button {
@@ -194,7 +201,7 @@
     #code {
         color: #bcf647;
         font: inherit;
-        font-size: 20px;
+        font-size: 25px;
         margin-left: 10px;
         margin-right: 10px;
     }
@@ -235,6 +242,10 @@
         animation: neonGlow 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
         padding-left: 5px;
         padding-right: 5px;
+    }
+
+    #membersHeaders{
+        font-size: 2em;
     }
 
     #play:hover {
@@ -323,8 +334,22 @@ overflow: auto;
     /* profile page */
 
     .favorites{
-        min-height: 500px;
         margin: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .favDiv {
+        background-color: fuchsia
+    }
+
+    .yourDiv {
+        background-color: #ef6eae
+    }
+
+    .winDiv {
+        background-color:  #ef8f6e;
     }
 
  /* login page */
@@ -345,6 +370,18 @@ overflow: auto;
     margin-bottom: 0px;
 }
 
+#message {
+    color: white;
+    font: inherit;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#here {
+    color: #bcf647
+}
+
 .gif {
     width: 100%
 }
@@ -353,3 +390,37 @@ overflow: auto;
     justify-content: center;
     text-align: center
 }
+
+.profileCats {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.silver {
+    margin-top: 13px;
+}
+
+.bronze {
+    margin-top: 13px;
+}
+
+.modal-header {
+    background-color: fuchsia;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-align: center;
+    animation: neonGlow 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    padding-left: 25.5%;
+}
+
+#modalTitle {
+    font-size: 3em;
+}
+
+.modal-footer {
+    background-color: fuchsia;
+    color: white;
+    font: inherit;
+    font-size: 25px;
+}
+
