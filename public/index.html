@@ -55,7 +55,7 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <p class="top" id="play">Play!</p>
+      <p class="top" id="play" onclick="playAudio()">Play!</p>
       <button class="slide" id="reset">Reset</button>
       <ul class="tournament">
         <li>
@@ -152,6 +152,11 @@
 
   </div>
   </div>
+
+  <audio id="myAudio">
+    <source src="sound/Cat-sound-effect.mp3" type="audio/ogg">
+  </audio>
+
   <script src="js/index.js"></script>
 </body>
 
