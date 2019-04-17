@@ -10,7 +10,7 @@ $(document).ready(function () {
     game()
 
     $.get("/api/user_data").then(function(data) {
-        
+
         userData = data.id
         console.log(userData)
         if (userData) {
@@ -175,10 +175,12 @@ $("#play").on("click", function (event) {
 
 $("#reset").on("click", function (event) {
     game()
+
     $("#gif1").attr("src", "https://requestreduce.org/images/cat-book-clipart-pusheen.png");
     $("#gif2").attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMyXdx7Y_b8xZ1IPPvykLCe-rY7VP1pq1ytIti2jQWZWzkx2JYIw");
     $("#gif3").attr("src", "https://appstickers-cdn.appadvice.com/1447881598/829772634/e3abc46a590c6f8616e61ca75a2b24d6-1.png");
     $("#gif4").attr("src", "http://images6.fanpop.com/image/photos/41200000/-l-p-pusheen-the-cat-41293287-500-336.png");
+
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
