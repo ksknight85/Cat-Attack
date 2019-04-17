@@ -131,7 +131,6 @@ $(".gif").on("click", function (event) {
             $("#winner").attr("src", this.src);
             $("#winner").attr("data-ownerId", ownerId);
             var winner = [$("#winner").attr("data-ownerId"), $("#winner").attr("src")];
-            console.log(winner[0])
             $.post("/api/winningGif/" + winner[0], {
                 url: winner[1],
             }, function(data) {
@@ -152,14 +151,11 @@ $(".gif").on("click", function (event) {
 
 $("#results-modal").on("click", "#addFav", function (){
     var url = $(this).attr("data-url")
-    console.log("addfav URL", url)
     $.post("/api/fav", {
         url: url,
         userId: userData
     },function(data) {
-        console.log(data)
     })
-    // console.log(url)
 })
 
 var urlGif1
@@ -179,7 +175,6 @@ function game() {
         userIDGif2 = data[1].UserId
         userIDGif3 = data[2].UserId
         userIDGif4 = data[3].UserId
-        console.log(urlGif1, urlGif2, urlGif3, urlGif4)
     })
 }
 function populateImages() {
@@ -194,7 +189,6 @@ function populateImages() {
 }
 
 $("#play").on("click", function (event) {
-    console.log("hi")
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");
@@ -220,7 +214,6 @@ $("#reset").on("click", function (event) {
 
 $("#logout").on("click", function(){
     $.get("/logout").then(function(data) {
-      console.log(data)
     });
 })
 

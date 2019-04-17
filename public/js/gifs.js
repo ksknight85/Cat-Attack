@@ -7,7 +7,6 @@ $(document).ready(function () {
     $.get("/api/user_data").then(function (data) {
 
         userData = data.id
-        console.log(userData)
         if (userData) {
             $("#user-name").text(" " + data.firstName)
         } else {
@@ -89,9 +88,7 @@ $("#gifDiv").on("click", ".selectMe", function () {
     url: picked,
     id: userId
   } 
-  console.log(chosen)
 $.post("/api/gifs", chosen, function(data) {
-//   console.log(data) 
     
 })
 });
@@ -162,7 +159,6 @@ setInterval(updateGradient, 10);
 
 $("#logout").on("click", function () {
     $.get("/logout").then(function (data) {
-        console.log(data)
     });
 })
 
