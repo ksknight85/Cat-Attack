@@ -32,6 +32,19 @@ $(document).ready(function() {
         yourImg.append(yourButton)
         $(".yourCats").append(yourImg)
         emojis += data[i].wins
+        var yourImg = $("<div>");
+        yourImg.addClass("yourDiv")
+        var myImage = $("<img>")
+        myImage.attr("src", data[i].url)
+        var yourButton = $("<button>Delete</button>");
+        yourButton.attr("data-user", userData)
+        yourButton.attr("data-url", data[i].url)
+        yourButton.attr("id", "deleteYourGif")
+        yourButton.addClass("raise")
+        yourImg.append(myImage)
+        yourImg.append(yourButton)
+        $(".yourCats").append(yourImg)
+    
       }
     }
     console.log(emojis)
