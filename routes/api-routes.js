@@ -108,7 +108,6 @@ module.exports = function (app) {
       })
 
       return res.json(chosenObjects)
-      console.log(chosenGifs)
 
     })
 
