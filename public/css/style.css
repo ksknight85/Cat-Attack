@@ -424,3 +424,10 @@ overflow: auto;
     font-size: 25px;
 }
 
+.medals {
+    width: 90%
+}
+
+#bronzeMedal {
+    padding-bottom: 30px;
+}

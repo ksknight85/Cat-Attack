@@ -78,22 +78,26 @@ module.exports = function (app) {
 
   // Route for pulling gif url data from gif table
   app.get("/api/CHANGEME", function (req, res) {
-    db.Gif.findAll().then(function (gifs) {
+    db.Gif.findAll({
+      order: [
+        ["gif_ID", "DESC"]
+      ]
+    }).then(function (gifs) {
       var randomNumber = []
       var chosenGifs = []
 
       if (gifs.length < 4){
-        return bares.status(500).end();
+        return res.status(500).end();
       }
 
       while (randomNumber.length < 4) {
-        var number = (Math.floor(Math.random() * gifs.length) + 1);
-        if (!randomNumber.includes(number)) {
+        var number = (Math.floor(Math.random() * gifs[0].gif_ID) + 1);
+        if (!gifs[number] && !randomNumber.includes(number)) {
           randomNumber.push(number)
-        }
+        } 
 
       }
-
+      console.log(randomNumber)
       db.Gif.findAll({
         where: {
           gif_ID: randomNumber[0]

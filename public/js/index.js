@@ -32,10 +32,11 @@ $(document).ready(function () {
         gold = winnersArray[0];
         silver = winnersArray[1];
         bronze = winnersArray[2]
+       
 
-        $(".gold").append("<img src=" + gold + ">")
-        $(".silver").append(("<img src=" + silver + ">"))
-        $(".bronze").append("<img src=" + bronze + ">")
+        $(".gold").append("<img class='medals' src=" + gold + ">")
+        $(".silver").append(("<img class='medals' src=" + silver + ">"))
+        $(".bronze").append("<img class='medals' id='bronzeMedal' src=" + bronze + ">")
     })
 });
 
@@ -154,7 +155,7 @@ function game() {
         urlGif1 = data0[0].url
         urlGif2 = data1[0].url
         urlGif3 = data2[0].url
-        urlGif4 = data2[0].url
+        urlGif4 = data3[0].url
         console.log(urlGif1, urlGif2, urlGif3, urlGif4)
     })
 }

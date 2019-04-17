@@ -19,6 +19,19 @@ $(document).ready(function() {
     for (var i=0; i<data.length; i++) {
       if (data[i].UserId === userData) {
         emojis += data[i].wins
+        var yourImg = $("<div>");
+        yourImg.addClass("yourDiv")
+        var myImage = $("<img>")
+        myImage.attr("src", data[i].url)
+        var yourButton = $("<button>Delete</button>");
+        yourButton.attr("data-user", userData)
+        yourButton.attr("data-url", data[i].url)
+        yourButton.attr("id", "deleteYourGif")
+        yourButton.addClass("raise")
+        yourImg.append(myImage)
+        yourImg.append(yourButton)
+        $(".yourCats").append(yourImg)
+    
       }
     }
     console.log(emojis)
@@ -27,24 +40,6 @@ $(document).ready(function() {
       littleEmoji.addClass("em em-heart_eyes_cat profileCats")
       $(".innerWins").append(littleEmoji)
   }
-  for (var i=0; i<data.length; i++) {
-    if(data[i].UserId === userData) {
-
-    var yourImg = $("<div>");
-    yourImg.addClass("yourDiv")
-    var myImage = $("<img>")
-    myImage.attr("src", data[i].url)
-    var yourButton = $("<button>Delete</button>");
-    yourButton.attr("data-user", userData)
-    yourButton.attr("data-url", data[i].url)
-    yourButton.attr("id", "deleteYourGif")
-    yourButton.addClass("raise")
-    yourImg.append(myImage)
-    yourImg.append(yourButton)
-    $(".yourCats").append(yourImg)
-
-    }
-  }  
     })
 
   $.get("/api/fav").then(function(data){
