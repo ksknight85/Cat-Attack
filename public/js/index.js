@@ -12,7 +12,6 @@ $(document).ready(function () {
     $.get("/api/user_data").then(function(data) {
 
         userData = data.id
-        console.log(userData)
         if (userData) {
             $("#catSearch").html(`<div class="navbar-nav"><a class="nav-item nav-link" href="./gifs.html">Pick a Cat<span class="sr-only"></span></a></div>`)
             $("#user-name").text(" " + data.firstName)
@@ -104,17 +103,31 @@ setInterval(updateGradient, 10);
 // GAME FUNCTIONALITY
 $(".gif").on("click", function (event) {
     if ((this.id === "gif1") || (this.id === "gif2")) {
-        $("#winOf12").attr("src", this.src)
+            var dataID = $(this).data("id");
+        $("#winOf12").attr("src", this.src);
+        $("#winOf12").attr("data-ownerId", dataID);
     }
     else if ((this.id === "gif3") || (this.id === "gif4")) {
+        var dataID = $(this).data("id");
         $("#winOf34").attr("src", this.src)
+        $("#winOf34").attr("data-ownerId", dataID);
+
     }
     else if ((this.id === "winOf12") || (this.id === "winOf34")) {
         if ($("#winOf12").attr("src") === undefined || $("#winOf34").attr("src") === undefined) {
             return
         }
         else {
-            $("#winner").attr("src", this.src)
+            var ownerId = $(this).attr("data-ownerId");
+            $("#winner").attr("src", this.src);
+            $("#winner").attr("data-ownerId", ownerId);
+            var winner = [$("#winner").attr("data-ownerId"), $("#winner").attr("src")];
+            console.log(winner[0])
+            $.post("/api/winningGif/" + winner[0], {
+                url: winner[1],
+            }, function(data) {
+
+            });
             if (userData) {
                 $(".modal-footer").html(`<button type="button" id="addFav" class="raise" data-dismiss="modal">Add to Favorites</button>`)
                 $("#addFav").attr("data-url", this.src)
@@ -146,6 +159,7 @@ var urlGif4
 
 function game() {
     $.get("/api/CHANGEME", function (data) {
+        console.log(data);
         var data0 = data[0]
         var data1 = data[1]
         var data2 = data[2]
@@ -155,6 +169,10 @@ function game() {
         urlGif2 = data1[0].url
         urlGif3 = data2[0].url
         urlGif4 = data3[0].url
+        userIDGif1 = data0[0].UserId
+        userIDGif2 = data1[0].UserId
+        userIDGif3 = data2[0].UserId
+        userIDGif4 = data3[0].UserId
         console.log(urlGif1, urlGif2, urlGif3, urlGif4)
     })
 }
@@ -163,6 +181,10 @@ function populateImages() {
     $("#gif2").attr("src", urlGif2);
     $("#gif3").attr("src", urlGif3);
     $("#gif4").attr("src", urlGif4);
+    $("#gif1").attr("data-id", userIDGif1);
+    $("#gif2").attr("data-id", userIDGif2);
+    $("#gif3").attr("data-id", userIDGif3);
+    $("#gif4").attr("data-id", userIDGif4);
 }
 
 $("#play").on("click", function (event) {
