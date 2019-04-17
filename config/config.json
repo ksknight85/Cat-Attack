@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "project2",
-    "port": "8889",
-    "host": "127.0.0.1",
+    "username": "yckvgrknzsytuo86",
+    "password": "o9f12gjtmvtd8fqd",
+    "database": "yc69eookwi8339a5",
+    "port": "3306",
+    "host": "ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
@@ -22,3 +22,13 @@
     "dialect": "mysql"
   }
 }
+
+
+// "development": {
+//   "username": "root",
+//   "password": "root",
+//   "database": "project2",
+//   "port": "8889",
+//   "host": "127.0.0.1",
+//   "dialect": "mysql"
+// }
