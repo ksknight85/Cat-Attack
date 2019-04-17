@@ -82,6 +82,10 @@ module.exports = function (app) {
       var randomNumber = []
       var chosenGifs = []
 
+      if (gifs.length < 4){
+        return bares.status(500).end();
+      }
+
       while (randomNumber.length < 4) {
         var number = (Math.floor(Math.random() * gifs.length) + 1);
         if (!randomNumber.includes(number)) {
