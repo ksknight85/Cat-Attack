@@ -5,10 +5,8 @@ $(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
-    // console.log(data)
     $(".member-name").text(data.firstName);
     userData = data.id
-    console.log(userData)
     if (userData) {
       $("#user-name").text(" " + data.firstName)
     } else {
@@ -81,14 +79,12 @@ $(".favCats").on("click", "#deleteGif", function (event) {
     UserId: user,
     url: URL
   }
-  console.log(chosen)
   $.ajax({
     method: "DELETE",
     url: "/api/delete",
     data: chosen
   })
     .then(function (data) {
-      console.log(data)
     });
   $(this).parent().empty()
 })
@@ -103,14 +99,12 @@ $(".yourCats").on("click", "#deleteYourGif", function (event) {
     UserId: user,
     url: URL
   }
-  console.log(chosen)
   $.ajax({
     method: "DELETE",
     url: "/api/wins",
     data: chosen
   })
     .then(function (data) {
-      console.log(data)
     });
   $(this).parent().empty()
 })

@@ -23,7 +23,6 @@ module.exports = function (app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function (req, res) {
-    console.log("\n\n" + req.body.firstName);
     db.User.create({
       email: req.body.email,
       password: req.body.password,
@@ -32,7 +31,6 @@ module.exports = function (app) {
     }).then(function () {
       res.redirect(307, "/api/login");
     }).catch(function (err) {
-      console.log(err);
       res.json(err);
       // res.status(422).json(err.errors[0].message);
     });
@@ -69,8 +67,6 @@ module.exports = function (app) {
   })
 
   app.post("/api/gifs", function (req, res) {
-    console.log(req.body.id)
-
     db.Gif.create({
       url: req.body.url,
       wins: 0,
@@ -129,8 +125,6 @@ module.exports = function (app) {
   })
 
   app.post("/api/fav", function (req, res) {
-    console.log(req.body)
-
     db.Favorite.create({
       url: req.body.url,
       UserId: parseInt(req.body.userId)
@@ -158,7 +152,6 @@ module.exports = function (app) {
         url: req.body.url
       }
     }).then(function(deleted) {
-      console.log("----------------", deleted)
         return res.json(deleted);
       });
   });
@@ -170,14 +163,11 @@ module.exports = function (app) {
         url: req.body.url
       }
     }).then(function(deleted) {
-      console.log("----------------", deleted)
         return res.json(deleted);
       });
   });
 
   app.post("/api/winningGif/:id", function(req, res) {
-    console.log(`\n\nid: ${req.params.id}`)
-    console.log(`url: ${req.body.url}\n\n`)
     db.User.increment("wins",{
       where: {
         id: req.params.id
