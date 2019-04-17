@@ -423,4 +423,8 @@ overflow: auto;
     font: inherit;
     font-size: 25px;
 }
-
+.myImg,
+.favImg {
+    display: block;
+    margin: 0 auto;
+}
