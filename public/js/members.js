@@ -31,7 +31,7 @@ $(document).ready(function() {
         yourImg.append(myImage)
         yourImg.append(yourButton)
         $(".yourCats").append(yourImg)
-        emojis += data[i].wins   
+        emojis += data[i].wins
       }
     }
     console.log(emojis)
@@ -113,4 +113,3 @@ console.log(chosen)
     });
   $(this).parent().empty()
 })
-

@@ -435,4 +435,9 @@ overflow: auto;
 .favImg {
     display: block;
     margin: 0 auto;
+    width: 90%
+}
+
+#weirdButton {
+    background-color: transparent;
 }
