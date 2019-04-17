@@ -78,59 +78,37 @@ module.exports = function (app) {
 
   // Route for pulling gif url data from gif table
   app.get("/api/CHANGEME", function (req, res) {
-    db.Gif.findAll({
-      order: [
-        ["gif_ID", "DESC"]
-      ]
-    }).then(function (gifs) {
-      var randomNumber = []
+    db.Gif.findAll().then(function (gifs) {
       var chosenGifs = []
-
+      
       if (gifs.length < 4){
         return res.status(500).end();
       }
 
-      while (randomNumber.length < 4) {
-        var number = (Math.floor(Math.random() * gifs[0].gif_ID) + 1);
-        if (!gifs[number] && !randomNumber.includes(number)) {
-          randomNumber.push(number)
-        } 
+      var currentIndex = gifs.length, temporaryValue, randomIndex;
 
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // And swap it with the current element.
+        temporaryValue = gifs[currentIndex];
+        gifs[currentIndex] = gifs[randomIndex];
+        gifs[randomIndex] = temporaryValue;
       }
-      console.log(randomNumber)
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[0]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
+
+    
+      var chosenObjects = [...gifs.slice(0,4)]
+
+      chosenGifs = chosenObjects.map(function(obj){
+        return obj.dataValues.url
       })
 
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[1]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-      })
-
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[2]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-      })
-
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[3]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-        console.log(chosenGifs)
-        return res.json(chosenGifs)
-      })
+      return res.json(chosenObjects)
+      console.log(chosenGifs)
 
     })
 

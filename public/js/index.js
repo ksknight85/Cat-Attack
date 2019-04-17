@@ -147,15 +147,17 @@ var urlGif4
 
 function game() {
     $.get("/api/CHANGEME", function (data) {
-        var data0 = data[0]
-        var data1 = data[1]
-        var data2 = data[2]
-        var data3 = data[3]
+        console.log(data)
+ 
+        // var data0 = data[0]
+        // var data1 = data[1]
+        // var data2 = data[2]
+        // var data3 = data[3]
 
-        urlGif1 = data0[0].url
-        urlGif2 = data1[0].url
-        urlGif3 = data2[0].url
-        urlGif4 = data3[0].url
+        urlGif1 = data[0].url
+        urlGif2 = data[1].url
+        urlGif3 = data[2].url
+        urlGif4 = data[3].url
         console.log(urlGif1, urlGif2, urlGif3, urlGif4)
     })
 }
