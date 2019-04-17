@@ -212,3 +212,9 @@ $("#logout").on("click", function(){
       console.log(data)
     });
 })
+
+var x = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  x.play(); 
+} 
