@@ -166,6 +166,7 @@ function populateImages() {
 }
 
 $("#play").on("click", function (event) {
+    console.log("hi")
     $("#winOf12").attr("src", "");
     $("#winOf34").attr("src", "");
     $("#winner").attr("src", "");

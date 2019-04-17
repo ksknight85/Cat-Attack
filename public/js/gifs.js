@@ -46,7 +46,7 @@ $("#getGifs").on("click", function (event) {
 
             gifEach.append(gifImg)
 
-            var gifButton = $("<button>Pick me!</button>")
+            var gifButton = $(`<a href='/'><button>Pick me!</button></a>`)
             gifButton.addClass("selectMe raise")
             gifButton.attr("data-id", userData)
             gifButton.attr("data-url", animateURL)
@@ -91,7 +91,8 @@ $("#gifDiv").on("click", ".selectMe", function () {
   } 
   console.log(chosen)
 $.post("/api/gifs", chosen, function(data) {
-  console.log(data) 
+//   console.log(data) 
+    
 })
 });
 
