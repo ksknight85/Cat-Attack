@@ -1,17 +1,21 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
-var Sequelize = require("sequelize")
+var Sequelize = require("sequelize");
 const Op = Sequelize.Op;
+
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
+
+
   app.post("/api/login", passport.authenticate("local"), function (req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
+    
     res.json("/members");
   });
 
@@ -79,54 +83,35 @@ module.exports = function (app) {
   // Route for pulling gif url data from gif table
   app.get("/api/CHANGEME", function (req, res) {
     db.Gif.findAll().then(function (gifs) {
-      var randomNumber = []
       var chosenGifs = []
-
+      
       if (gifs.length < 4){
         return res.status(500).end();
       }
 
-      while (randomNumber.length < 4) {
-        
-        var number = (Math.floor(Math.random() * gifs.length) + 1);
-        if (!randomNumber.includes(number)) {
-          randomNumber.push(number)
-        }
+      var currentIndex = gifs.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // And swap it with the current element.
+        temporaryValue = gifs[currentIndex];
+        gifs[currentIndex] = gifs[randomIndex];
+        gifs[randomIndex] = temporaryValue;
       }
 
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[0]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
+    
+      var chosenObjects = [...gifs.slice(0,4)]
+
+      chosenGifs = chosenObjects.map(function(obj){
+        return obj.dataValues.url
       })
 
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[1]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-      })
-
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[2]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-      })
-
-      db.Gif.findAll({
-        where: {
-          gif_ID: randomNumber[3]
-        }
-      }).then(function (data) {
-        chosenGifs.push(data)
-        console.log(chosenGifs)
-        return res.json(chosenGifs)
-      })
+      return res.json(chosenObjects)
 
     })
 

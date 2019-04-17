@@ -31,10 +31,11 @@ $(document).ready(function () {
         gold = winnersArray[0];
         silver = winnersArray[1];
         bronze = winnersArray[2]
+       
 
-        $(".gold").append("<img src=" + gold + ">")
-        $(".silver").append(("<img src=" + silver + ">"))
-        $(".bronze").append("<img src=" + bronze + ">")
+        $(".gold").append("<img class='medals' src=" + gold + ">")
+        $(".silver").append(("<img class='medals' src=" + silver + ">"))
+        $(".bronze").append("<img class='medals' id='bronzeMedal' src=" + bronze + ">")
     })
 });
 
@@ -159,20 +160,16 @@ var urlGif4
 
 function game() {
     $.get("/api/CHANGEME", function (data) {
-        console.log(data);
-        var data0 = data[0]
-        var data1 = data[1]
-        var data2 = data[2]
-        var data3 = data[3]
 
-        urlGif1 = data0[0].url
-        urlGif2 = data1[0].url
-        urlGif3 = data2[0].url
-        urlGif4 = data3[0].url
-        userIDGif1 = data0[0].UserId
-        userIDGif2 = data1[0].UserId
-        userIDGif3 = data2[0].UserId
-        userIDGif4 = data3[0].UserId
+        urlGif1 = data[0].url
+        urlGif2 = data[1].url
+        urlGif3 = data[2].url
+        urlGif4 = data[3].url
+
+        userIDGif1 = data[0].UserId
+        userIDGif2 = data[1].UserId
+        userIDGif3 = data[2].UserId
+        userIDGif4 = data[3].UserId
         console.log(urlGif1, urlGif2, urlGif3, urlGif4)
     })
 }

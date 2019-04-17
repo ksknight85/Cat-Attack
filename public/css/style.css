@@ -423,8 +423,21 @@ overflow: auto;
     font: inherit;
     font-size: 25px;
 }
+
+.medals {
+    width: 90%
+}
+
+#bronzeMedal {
+    padding-bottom: 30px;
+}
 .myImg,
 .favImg {
     display: block;
     margin: 0 auto;
+    width: 90%
+}
+
+#weirdButton {
+    background-color: transparent;
 }
