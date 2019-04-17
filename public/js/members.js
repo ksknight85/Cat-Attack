@@ -18,6 +18,19 @@ $(document).ready(function() {
   $.get("/api/wins", function(data) {
     for (var i=0; i<data.length; i++) {
       if (data[i].UserId === userData) {
+        var yourImg = $("<div>");
+        yourImg.addClass("yourDiv")
+        var myImage = $("<img>")
+        myImage.attr("src", data[i].url)
+        myImage.addClass("myImg");
+        var yourButton = $("<button>Delete</button>");
+        yourButton.attr("data-user", userData)
+        yourButton.attr("data-url", data[i].url)
+        yourButton.attr("id", "deleteYourGif")
+        yourButton.addClass("raise")
+        yourImg.append(myImage)
+        yourImg.append(yourButton)
+        $(".yourCats").append(yourImg)
         emojis += data[i].wins
         var yourImg = $("<div>");
         yourImg.addClass("yourDiv")
@@ -48,6 +61,7 @@ $(document).ready(function() {
         var gifImg = $("<div>");
         gifImg.addClass("gifDiv")
         var favImage = $("<img>");
+        favImage.addClass("favImg");
         favImage.attr("src", data[i].url)
         var gifButton = $("<button>Delete</button>")
         gifButton.attr("data-user", userData)

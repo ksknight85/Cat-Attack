@@ -171,4 +171,24 @@ module.exports = function (app) {
         return res.json(deleted);
       });
   });
+
+  app.post("/api/winningGif/:id", function(req, res) {
+    console.log(`\n\nid: ${req.params.id}`)
+    console.log(`url: ${req.body.url}\n\n`)
+    db.User.increment("wins",{
+      where: {
+        id: req.params.id
+      }
+    }).then (function() {
+      res.status(200).end();
+    });
+    db.Gif.increment("wins",{
+      where: {
+        UserId: req.params.id,
+        url: req.body.url
+      }
+    }).then (function() {
+      res.status(200).end();
+    });
+  });
 }
