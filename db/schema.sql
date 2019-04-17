@@ -11,4 +11,20 @@ CREATE TABLE gifs
   PRIMARY KEY (gif_Id)
 );
 
-SELECT * FROM gifs;
+CREATE TABLE favorites
+(
+id INT NOT NULL AUTO_INCREMENT, 
+url VARCHAR(500),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE users
+(
+id INT NOT NULL AUTO_INCREMENT, 
+email VARCHAR(500),
+password VARCHAR(500),
+firstName VARCHAR(500),
+lastName VARCHAR(500),
+wins INTEGER,
+PRIMARY KEY (id)
+);
