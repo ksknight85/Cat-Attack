@@ -23,8 +23,8 @@ It's well known that the internet is powered by cat memes/gifs. But finding the 
 
 ## Setup Instructions
 1. clone the repo 
-    * `git clone https://github.com/ksknight85/Project2`
-    * `cd Project2`
+    * `git clone git@github.com:ksknight85/Cat-Attack.git`
+    * `cd Cat-Attack`
 2. install dependencies
     * `npm run install`
 3. Start the development server
